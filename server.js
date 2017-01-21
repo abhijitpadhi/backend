@@ -22,7 +22,7 @@ var mongoose    = require('mongoose');  // 1. Mongoose, which is the most popula
 var passport  = require('passport');
 var config      = require('./config/database'); // get db config file
 var User        = require('./app/models/user'); // get the mongoose model having User Schema
-var port        = process.env.PORT || 8080;   /* The process.env property returns an object containing
+var port        = process.env.PORT || 8989;   /* The process.env property returns an object containing
                                                    the user environment. 
                                                   you can set the environment variable PORT to 
                                                    tell your web server what port to listen on.
