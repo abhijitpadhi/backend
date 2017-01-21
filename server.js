@@ -175,7 +175,7 @@ var apiRoutes = express.Router();                         /*
   })
 */
 
-
+/*
 // create a new user account (POST http://localhost:8080/api/signup)
 apiRoutes.post('/signup', function(req, res) {
   if (!req.body.name || !req.body.password) {
@@ -194,7 +194,35 @@ apiRoutes.post('/signup', function(req, res) {
     });
   }
 });
+*/
+// create a new user account after getting a customerRefNo (POST http://localhost:8080/api/signup)
 
+apiRoutes.put('/signup', function(req, res){
+    if (!req.body.name || !req.body.password || !req.body.customerRefNo) {
+      res.json({success: false, msg: 'Please pass name, password & customer reference number'});
+  } else {
+      User.findOneAndUpdate({
+          query: {customerRefNo: req.body.customerRefNo},
+          update: { $set: {
+                      name: req.body.name,
+                      password: req.body.password 
+                    }
+                  },
+          //new: true          
+        }, function(err, res){
+              if (err){
+                throw err;
+              } 
+
+              if (res == req.body.name) {
+                res.send({success: false, msg: 'User name already exists!'});
+              } else {
+                  res.json({success: true, msg: 'Successful created new user.'});
+                }
+            }
+      );
+    }
+});
 
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
 apiRoutes.post('/authenticate', function(req, res) {

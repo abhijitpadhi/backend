@@ -19,122 +19,96 @@ var UserSchema = new Schema({
         required: true
     },
  //Added new fields to the UserSchema
-  newAccNo:[
-       {sdoCode: {
-           type: Number,
-           required: true
-           }
-       },
-       {binderCode: {
-           type: Number,
-           required: true
-           }
-       },
-       {accNo: {
-           type: Number,
-           required: true
-           }
-       }
-     ],
+  customerRefNo:{
+       type: Number,
+        required: true
+  },
      oldAccNo: {
      	type: String,
-     	required: true
+     	//required: true
      },
      customerName: {
            type: String,
-           required: true,
-           address: [
-           	{address1: 
-           		{type: String,
-           		 required: true
-           		}
-           	},
-           	{address2: 
-           		{type: String}
-           	},
-           	{address3: 
-           		{type: String}
-           	}
-           ]
-       },
+           //required: true
+      },
+      address1: {
+        type: String,
+        //required: true
+   		},
        status: {
        	type: String,
-       	required: true
+       	//required: true
        },
        category: {
        	type: String,
-       	required: true
+       	//required: true
        },
        cd: {
        	type: String,
-       	required: true
+       	//required: true
+       },
+       cdUnit: {
+        type: String,
+        //required: true
        },
        billMonth: {
        	type: String,
-       	required: true
-       },
-       meterNo: {
-       	type: Number,
-       	required: true
-       },
-       mf: {
-       	type: Number,
-       	required: true
+       	//required: true
        },
        consumption: {
        	type: Number,
-       	required: true
+       	//required: true
        },
        energyCharges: {
        	type: Number,
-       	required: true
+       	//required: true
        },
        mmfc: {
        	type: Number,
-       	required: true
+       	//required: true
        },
        meterRent: {
        	type: Number,
-       	required: true
+       	//required: true
        },
-       ED: {
+       ed: {
        	type: Number,
-       	required: true
+       	//required: true
        },
 
-       DPS: {
+       dps: {
        	type: Number,
-       	required: true
+       	//required: true
        },
        currentBillAmt: {
        	type: Number,
-       	required: true
+       	//required: true
        },
 
        arrearAmt: {
        	type: Number,
-       	required: true
-       },
-       sundries: {
-       	type: Number,
-       	required: true
-       },
-       refund: {
-       	type: Number,
-       	required: true
+       	//required: true
        },
        totalBillAmt: {
        	type: Number,
-       	required: true
+       	//required: true
        },
-       rebatAmt: {
-       	type: Number,
-       	required: true
+       currentReading: {
+        type: Number,
+        //required: true
        },
-       payablebyRebateDate: {
-       	type: Number,
-       	required: true
-       } 
+       receiptNo: {
+        type: String,
+        //required: true
+       },
+       receiptDate: {
+        type: Number,
+        //required: true
+       },
+       receiptAmt: {
+        type: Number,
+        //required: true
+       }
 }); 
  
 UserSchema.pre('save', function (next) {                        /* 
